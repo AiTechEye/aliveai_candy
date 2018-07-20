@@ -1,6 +1,6 @@
 # Candy mobs for Aliveai
 
-# this mod is still in working progress, but are playable
+# this mod are still in working progress, but are playable
 # all mobs are done but not the biometric
 
 Version: 0.5
