@@ -610,24 +610,24 @@ minetest.register_node("aliveai_candy:gel_flowing2", {
 minetest.register_craftitem("aliveai_candy:gingerbread_piece1", {
 	description = "Gingerbread piece",
 	inventory_image = "aliveai_candy_gingerbread_piece1.png",
-	groups={aliveai_eatable=1}
+	groups={aliveai_eatable=1},
 	on_use =minetest.item_eat(1)
 })
 minetest.register_craftitem("aliveai_candy:gingerbread_piece2", {
 	description = "Gingerbread piece",
 	inventory_image = "aliveai_candy_gingerbread_piece2.png",
-	groups={aliveai_eatable=1}
+	groups={aliveai_eatable=1},
 	on_use =minetest.item_eat(1)
 })
 minetest.register_craftitem("aliveai_candy:lollipop_piece", {
 	description = "Lollipop piece",
 	inventory_image = "aliveai_candy_lollipop_piece.png",
-	groups={aliveai_eatable=1}
+	groups={aliveai_eatable=1},
 	on_use =minetest.item_eat(5)
 })
 minetest.register_craftitem("aliveai_candy:candycane_piece", {
 	description = "Candycane piece",
 	inventory_image = "aliveai_candy_candycane_piece.png",
-	groups={aliveai_eatable=5}
+	groups={aliveai_eatable=5},
 	on_use =minetest.item_eat(5)
 })
