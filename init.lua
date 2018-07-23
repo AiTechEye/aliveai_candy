@@ -430,6 +430,81 @@ minetest.register_node("aliveai_candy:sponge_cake", {
 	tiles = {"aliveai_candy_spongecake.png"},
 	sounds=default.node_sound_wood_defaults(),
 })
+minetest.register_node("aliveai_candy:marzipan_rose", {
+	description = "Marzipan rose",
+	groups = {snappy=3,flora=1,aliveai_eatable=1},
+	tiles = {"aliveai_candy_marzipan_rose.png"},
+	drawtype="plantlike",
+	walkable=false,
+	paramtype="light",
+	sunlight_propagates=true,
+	buildable_to=true,
+	sounds=default.node_sound_leaves_defaults(),
+	on_use=minetest.item_eat(1)
+})
+
+minetest.register_decoration({
+	deco_type = "simple",
+	place_on = {"aliveai_candy:sugar_with_glaze"},
+	sidelen = 16,
+	noise_params = {
+		offset = 0,
+		scale = 0.01,
+		spread = {x = 40, y = 40, z = 40},
+		seed = 329,
+		octaves = 4,
+		persist = 0.5
+	},
+	y_min = -10,
+	y_max = 32000,
+	decoration = "aliveai_candy:marzipan_rose",
+})
+
+
+
+
+local candycolor={"ff75ec","ff0000","00ff00","0000ff","00ffff","ffff00"}
+for i=1,6,1 do
+minetest.register_node("aliveai_candy:candy" .. i, {
+	description = "Candy",
+	groups = {snappy=3,flora=1,aliveai_eatable=1},
+	tiles = {"aliveai_grey.png^[colorize:#" .. candycolor[i] .."55"},
+	drawtype="nodebox",
+	walkable=false,
+	buildable_to=true,
+	paramtype="light",
+	sunlight_propagates=true,
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.25, -0.5, -0.4375, 0.25, -0.4, 0.4375},
+			{0.25, -0.5, -0.375, 0.375, -0.4, 0.375},
+			{0.375, -0.5, -0.3125, 0.4375, -0.4, 0.3125},
+			{-0.4375, -0.5, -0.3125, -0.375, -0.4, 0.3125},
+			{-0.375, -0.5, -0.375, -0.25, -0.4, 0.375},
+		}
+	},
+	on_use=minetest.item_eat(1),
+	sounds=default.node_sound_leaves_defaults(),
+})
+	minetest.register_decoration({
+		deco_type = "simple",
+		place_on = {"aliveai_candy:sugar_with_glaze"},
+		sidelen = 16,
+		noise_params = {
+			offset = 0,
+			scale = 0.01,
+			spread = {x = 20, y = 20, z = 20},
+			seed = 329,
+			octaves = 4,
+			persist = 0.5
+		},
+	y_min = -10,
+	y_max = 32000,
+	decoration = "aliveai_candy:candy" .. i,
+})
+end
+
 
 
 minetest.register_node("aliveai_candy:gel", {
@@ -535,20 +610,24 @@ minetest.register_node("aliveai_candy:gel_flowing2", {
 minetest.register_craftitem("aliveai_candy:gingerbread_piece1", {
 	description = "Gingerbread piece",
 	inventory_image = "aliveai_candy_gingerbread_piece1.png",
+	groups={aliveai_eatable=1}
 	on_use =minetest.item_eat(1)
 })
 minetest.register_craftitem("aliveai_candy:gingerbread_piece2", {
 	description = "Gingerbread piece",
 	inventory_image = "aliveai_candy_gingerbread_piece2.png",
+	groups={aliveai_eatable=1}
 	on_use =minetest.item_eat(1)
 })
 minetest.register_craftitem("aliveai_candy:lollipop_piece", {
 	description = "Lollipop piece",
 	inventory_image = "aliveai_candy_lollipop_piece.png",
+	groups={aliveai_eatable=1}
 	on_use =minetest.item_eat(5)
 })
 minetest.register_craftitem("aliveai_candy:candycane_piece", {
 	description = "Candycane piece",
 	inventory_image = "aliveai_candy_candycane_piece.png",
+	groups={aliveai_eatable=5}
 	on_use =minetest.item_eat(5)
 })
