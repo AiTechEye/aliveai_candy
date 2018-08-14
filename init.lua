@@ -148,7 +148,7 @@ aliveai.create_bot({
 					if not (pos1 and pos2 and self) then return end
 					local d={x=aliveai.nan((pos2.x-pos1.x)*d),y=aliveai.nan((pos2.y-pos1.y)*d),z=aliveai.nan((pos2.z-pos1.z)*d)}
 					aliveai.lookat(self,pos2)
-					minetest.add_entity({x=p.x,y=p.y+3,z=p.z}, "aliveai_candy:icecreamball"):setvelocity(d)
+					minetest.add_entity({x=p.x,y=p.y+3,z=p.z}, "aliveai_candy:icecreamball"):set_velocity(d)
 				end,p,d,self)
 					minetest.after(1.2, function(self)
 						if not self then return end
@@ -187,7 +187,7 @@ aliveai.create_bot({
 					aliveai.punch(self,ob,10)
 				elseif ob then
 					aliveai.punch(self,ob,10)
-					ob:setvelocity({x=(pos2.x-pos.x)*20, y=((pos2.y-pos.y))*30, z=(pos2.z-pos.z)*20})
+					ob:set_velocity({x=(pos2.x-pos.x)*20, y=((pos2.y-pos.y))*30, z=(pos2.z-pos.z)*20})
 
 
 				end
@@ -227,7 +227,7 @@ minetest.register_tool("aliveai_candy:icecreamball", {
 		pos.y=pos.y+1.5
 		local d={x=dir.x*15,y=dir.y*15,z=dir.z*15}
 		local e=minetest.add_entity({x=pos.x+(dir.x*3),y=pos.y+(dir.y*3),z=pos.z+(dir.z*3)}, "aliveai_candy:icecreamball")
-		e:setvelocity(d)
+		e:set_velocity(d)
 		itemstack:add_wear(65536)
 		return itemstack
 	end,
@@ -242,11 +242,11 @@ minetest.register_entity("aliveai_candy:icecreamball",{
 	textures ={"aliveai_candy_icecreammonstermaster.png"},
 	on_activate=function(self, staticdata)
 		self.object:set_animation({x=1,y=80,},30,0)
-		self.object:setacceleration({x=0,y=-10,z =0})
+		self.object:set_acceleration({x=0,y=-10,z =0})
 		self.att={}
 	end,
 	on_step=function(self, dtime)
-		local pos=self.object:getpos()
+		local pos=self.object:get_pos()
 		local p
 		for _, ob in ipairs(minetest.get_objects_inside_radius(pos, 2.5)) do
 			if aliveai.team(ob)~="candy" and not ob:get_attach() and aliveai.visiable(self,ob:get_pos()) then
@@ -631,3 +631,4 @@ minetest.register_craftitem("aliveai_candy:candycane_piece", {
 	groups={aliveai_eatable=5},
 	on_use =minetest.item_eat(5)
 })
+
