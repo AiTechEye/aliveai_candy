@@ -1,6 +1,6 @@
 # Candy mobs for Aliveai
 Version: 1
-License: CC0
+Licenses: code: LGPL-2.1, media: CC BY-SA-4.0
 
 Adds a candy biometric and sweet & powerful mobs
 
